@@ -1,5 +1,5 @@
 //
-//  main.m
+//  FISDeck.h
 //  CommandLineBlackjack
 //
 //  Created by Damon Skinner on 2/11/15.
@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ExecuteProgram.h"
+#import "FISCard.h"
 
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        [ExecuteProgram run];
-    }
-    return 0;
-}
+@interface FISDeck : NSObject
+
+@property (nonatomic, strong) NSMutableArray *cards;
+-(FISCard *)drawRandomCard;
+
+@end

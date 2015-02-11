@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3614FC621A8BA7BB0047E0D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3614FC611A8BA7BB0047E0D4 /* main.m */; };
+		363E1ABE1A8BB45E000DA365 /* ExecuteProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 363E1ABD1A8BB45E000DA365 /* ExecuteProgram.m */; };
+		363E1AC11A8BB5E7000DA365 /* FISDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 363E1AC01A8BB5E7000DA365 /* FISDeck.m */; };
+		363E1AC41A8BB62F000DA365 /* FISCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 363E1AC31A8BB62F000DA365 /* FISCard.m */; };
+		363E1AC71A8BB664000DA365 /* FISBlackjackGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 363E1AC61A8BB664000DA365 /* FISBlackjackGame.m */; };
+		363E1ACA1A8BB6B0000DA365 /* FISPlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 363E1AC91A8BB6B0000DA365 /* FISPlayingCardDeck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,16 @@
 /* Begin PBXFileReference section */
 		3614FC5E1A8BA7BB0047E0D4 /* CommandLineBlackjack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CommandLineBlackjack; sourceTree = BUILT_PRODUCTS_DIR; };
 		3614FC611A8BA7BB0047E0D4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		363E1ABC1A8BB45E000DA365 /* ExecuteProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecuteProgram.h; sourceTree = "<group>"; };
+		363E1ABD1A8BB45E000DA365 /* ExecuteProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExecuteProgram.m; sourceTree = "<group>"; };
+		363E1ABF1A8BB5E7000DA365 /* FISDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISDeck.h; sourceTree = "<group>"; };
+		363E1AC01A8BB5E7000DA365 /* FISDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISDeck.m; sourceTree = "<group>"; };
+		363E1AC21A8BB62F000DA365 /* FISCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISCard.h; sourceTree = "<group>"; };
+		363E1AC31A8BB62F000DA365 /* FISCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISCard.m; sourceTree = "<group>"; };
+		363E1AC51A8BB664000DA365 /* FISBlackjackGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISBlackjackGame.h; sourceTree = "<group>"; };
+		363E1AC61A8BB664000DA365 /* FISBlackjackGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISBlackjackGame.m; sourceTree = "<group>"; };
+		363E1AC81A8BB6B0000DA365 /* FISPlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISPlayingCardDeck.h; sourceTree = "<group>"; };
+		363E1AC91A8BB6B0000DA365 /* FISPlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISPlayingCardDeck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,16 @@
 			isa = PBXGroup;
 			children = (
 				3614FC611A8BA7BB0047E0D4 /* main.m */,
+				363E1ABC1A8BB45E000DA365 /* ExecuteProgram.h */,
+				363E1ABD1A8BB45E000DA365 /* ExecuteProgram.m */,
+				363E1ABF1A8BB5E7000DA365 /* FISDeck.h */,
+				363E1AC01A8BB5E7000DA365 /* FISDeck.m */,
+				363E1AC21A8BB62F000DA365 /* FISCard.h */,
+				363E1AC31A8BB62F000DA365 /* FISCard.m */,
+				363E1AC51A8BB664000DA365 /* FISBlackjackGame.h */,
+				363E1AC61A8BB664000DA365 /* FISBlackjackGame.m */,
+				363E1AC81A8BB6B0000DA365 /* FISPlayingCardDeck.h */,
+				363E1AC91A8BB6B0000DA365 /* FISPlayingCardDeck.m */,
 			);
 			path = CommandLineBlackjack;
 			sourceTree = "<group>";
@@ -118,7 +143,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363E1AC41A8BB62F000DA365 /* FISCard.m in Sources */,
+				363E1ABE1A8BB45E000DA365 /* ExecuteProgram.m in Sources */,
 				3614FC621A8BA7BB0047E0D4 /* main.m in Sources */,
+				363E1AC11A8BB5E7000DA365 /* FISDeck.m in Sources */,
+				363E1ACA1A8BB6B0000DA365 /* FISPlayingCardDeck.m in Sources */,
+				363E1AC71A8BB664000DA365 /* FISBlackjackGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +262,7 @@
 				3614FC671A8BA7BB0047E0D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
