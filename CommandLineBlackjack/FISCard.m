@@ -16,6 +16,17 @@
     if (self){
         if ([self validRank:rank]){
             _rank=rank;
+            if([rank integerValue]==1){
+                _cardFace=@"A";
+            } else if ([rank integerValue]==11){
+                _cardFace=@"J";
+            } else if ([rank integerValue]==12){
+                _cardFace=@"Q";
+            } else if ([rank integerValue]==13){
+                _cardFace=@"K";
+            } else {
+                _cardFace=[rank stringValue];
+            }
         } else {
             _rank=@0;
         }
@@ -67,7 +78,7 @@
 
 -(NSString *) description{
     
-    return [NSString stringWithFormat:@"%@ %@",self.rank, self.suit];
+    return [NSString stringWithFormat:@"%@ %@",self.cardFace, self.suit];
 }
 
 @end

@@ -11,6 +11,7 @@
 @interface FISCard : NSObject
 @property (nonatomic, strong) NSString *suit;
 @property (nonatomic) NSNumber *rank;
+@property (nonatomic, strong) NSString *cardFace;
 
 -(instancetype) initWithSuit: (NSString *) suit rank: (NSNumber *) rank;
 -(BOOL) validRank:(NSNumber *)rank;
@@ -18,4 +19,5 @@
 
 -(void) setSuit:(NSString *)suit;
 -(void) setRank:(NSNumber *)rank;
+
 @end
