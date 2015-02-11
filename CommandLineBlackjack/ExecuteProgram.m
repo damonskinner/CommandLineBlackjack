@@ -13,7 +13,7 @@
 
 +(void) run {
 //    NSLog(@"Program running...");
-    NSLog(@"\r\rWelcome to Blackjack!  Race the dealer to hit 21, but don't bust!  Each game costs $5, and you begin with $100.  Blackjack pays time and a half!  Time to let it ride!");
+    NSLog(@"\r\rWelcome to Blackjack!  Race the dealer to hit 21, but don't bust!  You begin with $100.00.  Blackjack pays time and a half!  Time to let it ride!");
     [self menu];
     
 }
@@ -42,27 +42,27 @@
     
     [newGame deal];
     
-    NSLog(@"\r\rYou have : %@\r Current Funds: $%f", newGame.handScore, newGame.money);
+    NSLog(@"\r\rYou have : %@\r Current Funds: $%@", newGame.handScore, [NSString stringWithFormat:@"%.02f", newGame.money]);
     sleep(1);
     
     
     [self hitChoice:newGame];
     
     if(newGame.isBlackjack){
-        sleep(2);
+        sleep(1);
         newGame.money+=(newGame.bet*2.5);
-        NSLog(@"\r\rYou hit blackjack!  Your final score was: %@\rCurrent Funds: $%f", newGame.handScore, newGame.money);
+        NSLog(@"\r\rYou hit blackjack!  Your final score was: %@\rCurrent Funds: $%@", newGame.handScore, [NSString stringWithFormat:@"%.02f", newGame.money]);
         [self playAgain:newGame];
     }
     if(newGame.isBusted){
-        sleep(2);
-        NSLog(@"\r\rYou busted!  Your final score was: %@\rCurrent Funds: $%f", newGame.handScore,newGame.money);
+        sleep(1);
+        NSLog(@"\r\rYou busted!  Your final score was: %@\rCurrent Funds: $%@", newGame.handScore,[NSString stringWithFormat:@"%.02f", newGame.money]);
         [self playAgain:newGame];
     }
     
     NSLog(@"\r\rThe dealer has: %@   %@  for a total of : %@,", newGame.dealerHand[0], newGame.dealerHand[1], newGame.dealerHandScore);
     if ([newGame.dealerHandScore integerValue]<17){
-        NSLog(@"\r\rDealer is hitting until hitting 17...");
+        NSLog(@"\r\rDealer must hit until reaching 17 or bust...");
         do {
             [newGame dealerHit];
         } while ([newGame.dealerHandScore integerValue] <17);
@@ -71,18 +71,18 @@
     sleep(1);
     if([newGame.dealerHandScore integerValue]>21){
         newGame.money+=(newGame.bet*2);
-        NSLog(@"\r\rThe dealer busted!  You win!\rCurrent Funds: $%f", newGame.money);
+        NSLog(@"\r\rThe dealer busted!  You win!\rCurrent Funds: $%@", [NSString stringWithFormat:@"%.02f", newGame.money]);
     } else if ([newGame.dealerHandScore integerValue]==21) {
-        NSLog(@"\r\rThe dealer hit blackjack!  You lose!\rCurrent Funds: $%f", newGame.money);
+        NSLog(@"\r\rThe dealer hit blackjack!  You lose!\rCurrent Funds: $%@", [NSString stringWithFormat:@"%.02f", newGame.money]);
     } else {
         if ([newGame.dealerHandScore integerValue]<[newGame.handScore integerValue]){
             newGame.money+=(newGame.bet*2);
-            NSLog(@"\r\rDealer has: %@ You have: %@ You win!\rCurrent Funds: $%f",newGame.dealerHandScore, newGame.handScore, newGame.money);
+            NSLog(@"\r\rDealer has: %@ You have: %@ You win!\rCurrent Funds: $%@",newGame.dealerHandScore, newGame.handScore, [NSString stringWithFormat:@"%.02f", newGame.money]);
         } else if ([newGame.dealerHandScore integerValue]>[newGame.handScore integerValue]){
-            NSLog(@"\r\rDealer has: %@ You have: %@ You lose!\rCurrent Funds: $%f",newGame.dealerHandScore, newGame.handScore, newGame.money);
+            NSLog(@"\r\rDealer has: %@ You have: %@ You lose!\rCurrent Funds: $%@",newGame.dealerHandScore, newGame.handScore, [NSString stringWithFormat:@"%.02f", newGame.money]);
         } else {
             newGame.money+=(newGame.bet);
-            NSLog(@"\r\rDealer has: %@ You have: %@ You push!\rCurrent Funds: $%f",newGame.dealerHandScore, newGame.handScore, newGame.money);
+            NSLog(@"\r\rDealer has: %@ You have: %@ You push!\rCurrent Funds: $%@",newGame.dealerHandScore, newGame.handScore, [NSString stringWithFormat:@"%.02f", newGame.money]);
             
         }
     }
@@ -110,14 +110,29 @@
 }
 
 +(void) placeBet:(FISBlackjackGame *) newGame{
-    NSLog(@"\r\rCurrent funds: %f",newGame.money);
+    NSLog(@"\r\rCurrent funds: $%@",[NSString stringWithFormat:@"%.02f", newGame.money]);
     NSString *betChoice=[self getInputWithMessage:@"\r\rHow much would you like to bet?"];
-    if([betChoice floatValue]>newGame.money){
-        NSLog(@"\r\rYou can't bet more money than you currently have.");
+    BOOL stringHasNonDigits = [[betChoice stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]] length]>0;
+    
+    BOOL stringOnlyDigitIsPeriod = [[betChoice stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]] isEqualToString:@"."];
+    
+//    if([[betChoice stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]] length]>0 && ![[betChoice stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]] isEqualToString:@"." ]){
+//        
+//        NSLog(@"\r\rPlease enter a valid bet.");
+//        [self placeBet:newGame];
+//    }
+    if((stringHasNonDigits && !stringOnlyDigitIsPeriod) || ([betChoice floatValue]==0)){
+        
+        NSLog(@"\r\rPlease enter a valid bet.");
         [self placeBet:newGame];
     } else {
-        newGame.bet=[betChoice floatValue];
-        newGame.money=newGame.money-newGame.bet;
+        if([betChoice floatValue]>newGame.money){
+            NSLog(@"\r\rYou can't bet more money than you currently have.");
+            [self placeBet:newGame];
+        } else {
+            newGame.bet=[betChoice floatValue];
+            newGame.money=newGame.money-newGame.bet;
+        }
     }
 }
 
@@ -143,7 +158,7 @@
 +(void) endGame:(FISBlackjackGame *) newGame {
     NSLog(@"\r\rThank you for playing!");
     if(newGame.money>0){
-        NSLog(@"\r\rYour winnings: $%f",newGame.money);
+        NSLog(@"\r\rYour winnings: $%@",[NSString stringWithFormat:@"%.02f", newGame.money]);
     }
     exit (0);
 }
