@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FISBlackjackGame.h"
 
 @interface ExecuteProgram : NSObject
 
@@ -14,7 +15,9 @@
 
 +(NSString *)getInputWithMessage:(NSString *)message;
 +(void) menu;
-+(void) gameStart;
-+(void) endGame;
++(void) gameStart:(FISBlackjackGame *) newGame;
++(void) endGame:(FISBlackjackGame *) newGame;
++(void) placeBet:(FISBlackjackGame *) newGame;
+
 
 @end

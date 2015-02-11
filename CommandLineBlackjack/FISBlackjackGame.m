@@ -24,10 +24,26 @@
         _dealerHandScore=@0;
         _dealerIsBusted=NO;
         _dealerIsBlackjack=NO;
+        _money=100;
+        _bet=0;
     }
     
     return self;
 }
+
+-(void) resetHands {
+    _playingCardDeck=[[FISPlayingCardDeck alloc]init];
+    _isBusted = NO;
+    _isBlackjack=NO;
+    _hand=[[NSMutableArray alloc] init];
+    _handScore=@0;
+    _dealerHand=[[NSMutableArray alloc] init];
+    _dealerHandScore=@0;
+    _dealerIsBusted=NO;
+    _dealerIsBlackjack=NO;
+    _bet=0;
+}
+
 - (void)deal{
     FISCard *firstCard=[self.playingCardDeck drawRandomCard];
     [self.hand addObject:firstCard];

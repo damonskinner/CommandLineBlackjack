@@ -19,9 +19,13 @@
 @property (nonatomic) BOOL isBlackjack; // returns YES if handScore is 21
 @property (nonatomic) BOOL dealerIsBusted;
 @property (nonatomic) BOOL dealerIsBlackjack;
+@property (nonatomic) CGFloat money;
+@property (nonatomic) CGFloat bet;
 
 
 - (instancetype)init;
+-(void) resetHands;
+
 - (void)deal;
 - (void)hit;
 -(void) dealerHit;
